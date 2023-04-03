@@ -1,15 +1,24 @@
-const sensitiveDataRegex = /((\d{3}-\d{2}-\d{4})|(\d{3}\.\d{2}\.\d{4})|(\d{3} \d{2} \d{4})|(\d{10})|(\d{3}[\s-]\d{3}[\s-]\d{4})|([A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}))/g;
+const sensitiveDataRegex = /^(?:(?:\+1[2-9]\d{9}|\+44\d{10}|\+61\d{9}|\+91[6-9]\d{9}|\+86\d{11})|(?:[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}))$/;
+const sensitiveDataMobile = /(?:(?:\+\d{1,2}\s?)?(?:\d{10}|\d{2}\s?\d{3}\s?\d{3}\s?\d{2}))/;
+const sensitiveDataEmail = /(?:[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})/;
 
 function monitorChatTextarea() {
-  const chatTextarea = document.evaluate('//*[@id="__next"]/div[2]/div[1]/main/div[2]/form/div/div[2]/textarea', document, null, 9, null);
+  const chatTextarea = document.querySelector('textarea');
+  // console.log('Text entered in chatTextarea: without chat extraction', chatTextarea);
 
-  if (chatTextarea.singleNodeValue) {
-    chatTextarea.singleNodeValue.addEventListener('input', () => {
-      const text = chatTextarea.singleNodeValue.value;
-      const sensitiveDataMatches = text.match(sensitiveDataRegex);
+  if (chatTextarea) {
+    chatTextarea.addEventListener('input', () => {
+      const text = chatTextarea.value;
+      // console.log('Text entered in chatTextarea:', text);
+      const sensitiveDataMatchesMobile = text.match(sensitiveDataMobile);
+      const sensitiveDataMatchesEmail = text.match(sensitiveDataEmail);
 
-      if (sensitiveDataMatches) {
-        alert('Sensitive data detected!');
+      if (sensitiveDataMatchesMobile) {
+        // console.log('Sensitive mobile number has been entered:', sensitiveDataMatchesMobile[0]);
+        alert('Sensitive mobile number has been entered!');
+      } else if (sensitiveDataMatchesEmail) {
+        // console.log('Sensitive email data has been entered:', sensitiveDataMatchesEmail[0]);
+        alert('Sensitive email data has been entered!');
       }
     });
   } else {
