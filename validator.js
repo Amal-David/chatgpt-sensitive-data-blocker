@@ -1,0 +1,1 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/validator/13.6.0/validator.min.js" integrity="sha512-FTJhHaXGp9a3jK3qxErROw68UJZTKh5BvU8vg5j6H5Uz9D9A2vGNjKcqWwDrI/Hxj1V0gPKb8dJWu+PzNen7Vg==" crossorigin="anonymous"></script>

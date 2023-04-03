@@ -1,0 +1,16 @@
+{
+    "manifest_version": 3,
+    "name": "Sensitive Data Detector",
+    "version": "1.0.0",
+    "description": "Detects and warns when sensitive data is entered in chat.openai.com",
+    "permissions": ["activeTab"],
+    "host_permissions": ["<all_urls>"],
+    "content_scripts": [
+      {
+        "matches": ["https://chat.openai.com/*"],
+        "js": ["content.js"],
+        "run_at": "document_end"
+      }
+    ]
+  }
+  
