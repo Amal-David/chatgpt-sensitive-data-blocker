@@ -1,6 +1,6 @@
 {
     "manifest_version": 3,
-    "name": "Sensitive Data Detector",
+    "name": "Sensitive Data Protector for OpenAI Chat",
     "version": "1.0.0",
     "description": "Detects and warns when sensitive data is entered in chat.openai.com",
     "permissions": ["activeTab"],

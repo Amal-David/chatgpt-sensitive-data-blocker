@@ -15,10 +15,10 @@ function monitorChatTextarea() {
 
       if (sensitiveDataMatchesMobile) {
         // console.log('Sensitive mobile number has been entered:', sensitiveDataMatchesMobile[0]);
-        alert('Sensitive mobile number has been entered!');
+        alert('Caution! You have entered a phone number. Please avoid sharing sensitive information like phone numbers in the chat');
       } else if (sensitiveDataMatchesEmail) {
         // console.log('Sensitive email data has been entered:', sensitiveDataMatchesEmail[0]);
-        alert('Sensitive email data has been entered!');
+        alert('Warning! You have entered an email address. To protect your privacy, please refrain from sharing sensitive information like email addresses in the chat');
       }
     });
   } else {
